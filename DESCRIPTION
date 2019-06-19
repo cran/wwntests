@@ -1,0 +1,27 @@
+Package: wwntests
+Type: Package
+Title: Hypothesis Tests for Functional Time Series
+Version: 1.0.0
+Author: Daniel Petoukhov [aut, cre]
+Maintainer: Daniel Petoukhov <dvpetouk@uwaterloo.ca>
+Authors@R: person("Daniel", "Petoukhov", email = "dvpetouk@uwaterloo.ca", role = c("aut", "cre"))
+Description: Provides an array of white noise hypothesis tests for functional data and related visualizations. 
+  These include tests based on the norms of autocovariance operators that are built under both strong and weak 
+  white noise assumptions. Additionally, tests based on the spectral density operator and on principal component
+  dimensional reduction are included, which are built under strong white noise assumptions. These methods are
+  described in Kokoszka et al. (2017) <doi:10.1016/j.jmva.2017.08.004>, Characiejus and Rice (2019) 
+  <doi:10.1016/j.ecosta.2019.01.003>, and Gabrys and Kokoszka (2007) <doi:10.1198/016214507000001111>, 
+  respectively.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.4.0)
+Imports: sde, stats, ftsa, rainbow, MASS, graphics
+Suggests: testthat, knitr, rmarkdown, fOptions, CompQuadForm, tensorA
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr
+BugReports: https://github.com/jimthemadmanlahey/wwntests/issues
+NeedsCompilation: no
+Packaged: 2019-06-18 22:08:43 UTC; daniel
+Repository: CRAN
+Date/Publication: 2019-06-19 10:50:03 UTC
