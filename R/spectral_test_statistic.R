@@ -11,6 +11,7 @@
 spectral_t_statistic <- function(f_data, kernel = 'Bartlett', bandwidth = 'adaptive') {
   J <- NROW(f_data)
   N <- NCOL(f_data)
+  f_data <- center(f_data)
   kernel_string <- kernel
   if (kernel == 'Bartlett') {
     kernel <- bartlett_kernel
@@ -90,8 +91,7 @@ adaptive_bandwidth <- function(f_data, kernel) {
   initial_band_0 <- initial_band_q / 4
   k_n_j_0 <- kernel(1:(N-1) / initial_band_0)
   Q_hat_sq <- 2 * sum(k_n_j_0^2 * C_hat_HS[-1])
-  Q_hat_sq <- Q_hat_sq + sum(C_hat_HS[0])
-  Term2 <- Q_hat_sq
+  Term2 <- Q_hat_sq + C_hat_HS[1]
   Term1 <- 2 * sum(k_n_j_q^2 * ((1:(N-1))^(2*order)) * C_hat_HS[-1])
   C_hat_TR <- numeric(0)
   for (j in 0:(N-1)) {

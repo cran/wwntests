@@ -4,8 +4,14 @@
 \alias{independence_test}
 \title{Independence Test}
 \usage{
-independence_test(f_data, components, lag, alpha = 0.05,
-  suppress_raw_output = FALSE, suppress_print_output = FALSE)
+independence_test(
+  f_data,
+  components,
+  lag,
+  alpha = 0.05,
+  suppress_raw_output = FALSE,
+  suppress_print_output = FALSE
+)
 }
 \arguments{
 \item{f_data}{the functional data matrix with observed functions in the columns}

@@ -4,9 +4,18 @@
 \alias{Q_WS_hyp_test}
 \title{Compute size alpha single-lag hypothesis test under weak or strong white noise assumption}
 \usage{
-Q_WS_hyp_test(f_data, lag, alpha = 0.05, iid = FALSE, M = NULL,
-  low_disc = FALSE, bootstrap = FALSE, block_size = "adaptive",
-  straps = 300, moving = FALSE)
+Q_WS_hyp_test(
+  f_data,
+  lag,
+  alpha = 0.05,
+  iid = FALSE,
+  M = NULL,
+  low_disc = FALSE,
+  bootstrap = FALSE,
+  block_size = "adaptive",
+  straps = 300,
+  moving = FALSE
+)
 }
 \arguments{
 \item{f_data}{the functional data matrix with observed functions in the columns}

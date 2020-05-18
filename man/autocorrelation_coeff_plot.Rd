@@ -4,8 +4,14 @@
 \alias{autocorrelation_coeff_plot}
 \title{Plot Confidence Bounds of Estimated Functional Autocorrelation Coefficients}
 \usage{
-autocorrelation_coeff_plot(f_data, K = 20, alpha = 0.05, M = NULL,
-  low_disc = FALSE)
+autocorrelation_coeff_plot(
+  f_data,
+  K = 20,
+  alpha = 0.05,
+  M = NULL,
+  low_disc = FALSE,
+  wwn_bound = TRUE
+)
 }
 \arguments{
 \item{f_data}{The functional data matrix with observed functions in the columns.}
@@ -22,6 +28,9 @@ Welch-Satterthwaite approximation of the limiting distribution of the test stati
 \item{low_disc}{A Boolean value, FALSE by default. If given TRUE, uses low-discrepancy sampling in the
 Monte-Carlo method. Note, low-discrepancy sampling will yield deterministic results.
 Requires the 'fOptions' package.}
+
+\item{wwn_bound}{A Boolean value allowing the user to turn off the weak white noise bound. TRUE by default.
+Speeds up computation when FALSE.}
 }
 \value{
 Plot of the estimated autocorrelation coefficients for lags h in 1:K with the weak

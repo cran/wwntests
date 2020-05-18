@@ -4,9 +4,14 @@
 \alias{spectral_test}
 \title{Spectral Density Test}
 \usage{
-spectral_test(f_data, kernel = "Bartlett", bandwidth = "adaptive",
-  alpha = 0.05, suppress_raw_output = FALSE,
-  suppress_print_output = FALSE)
+spectral_test(
+  f_data,
+  kernel = "Bartlett",
+  bandwidth = "adaptive",
+  alpha = 0.05,
+  suppress_raw_output = FALSE,
+  suppress_print_output = FALSE
+)
 }
 \arguments{
 \item{f_data}{The functional data matrix with observed functions in the columns}

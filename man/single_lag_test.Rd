@@ -4,10 +4,20 @@
 \alias{single_lag_test}
 \title{Single-Lag Hypothesis Test}
 \usage{
-single_lag_test(f_data, lag = 1, alpha = 0.05, iid = FALSE,
-  M = NULL, low_disc = FALSE, bootstrap = FALSE,
-  block_size = "adaptive", straps = 300, moving = FALSE,
-  suppress_raw_output = FALSE, suppress_print_output = FALSE)
+single_lag_test(
+  f_data,
+  lag = 1,
+  alpha = 0.05,
+  iid = FALSE,
+  M = NULL,
+  low_disc = FALSE,
+  bootstrap = FALSE,
+  block_size = "adaptive",
+  straps = 300,
+  moving = FALSE,
+  suppress_raw_output = FALSE,
+  suppress_print_output = FALSE
+)
 }
 \arguments{
 \item{f_data}{The functional data matrix with observed functions in the columns}

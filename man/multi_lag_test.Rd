@@ -4,9 +4,16 @@
 \alias{multi_lag_test}
 \title{Multi-Lag Hypothesis Test}
 \usage{
-multi_lag_test(f_data, lag = 20, M = NULL, low_disc = FALSE,
-  iid = FALSE, alpha = 0.05, suppress_raw_output = FALSE,
-  suppress_print_output = FALSE)
+multi_lag_test(
+  f_data,
+  lag = 20,
+  M = NULL,
+  low_disc = FALSE,
+  iid = FALSE,
+  alpha = 0.05,
+  suppress_raw_output = FALSE,
+  suppress_print_output = FALSE
+)
 }
 \arguments{
 \item{f_data}{the functional data matrix with observed functions in the columns}

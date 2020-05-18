@@ -253,6 +253,8 @@ Press [enter] if you would like to continue.")
 #' @param low_disc A Boolean value, FALSE by default. If given TRUE, uses low-discrepancy sampling in the
 #' Monte-Carlo method. Note, low-discrepancy sampling will yield deterministic results.
 #' Requires the 'fOptions' package.
+#' @param wwn_bound A Boolean value allowing the user to turn off the weak white noise bound. TRUE by default.
+#' Speeds up computation when FALSE.
 #' @details This function computes and plots autocorrelation coefficients at lag h, for h in 1:K. It also
 #' computes an estimated asymptotic 1 - alpha confidence bound, under the assumption that the series
 #' forms a weak white noise. Additionally, it computes a similar (constant) bound under the assumption the
@@ -273,7 +275,8 @@ Press [enter] if you would like to continue.")
 #' @export
 #' @import sde
 #' @importFrom graphics legend lines par plot
-autocorrelation_coeff_plot <- function(f_data, K=20, alpha=0.05, M=NULL, low_disc=FALSE) {
+autocorrelation_coeff_plot <- function(f_data, K=20, alpha=0.05, M=NULL, low_disc=FALSE,
+                                       wwn_bound=TRUE) {
   if ((K < 1) | (K %% 1 != 0)) {
     stop("The parameter 'K' must be a positive integer.")
   }
@@ -282,19 +285,30 @@ autocorrelation_coeff_plot <- function(f_data, K=20, alpha=0.05, M=NULL, low_dis
   }
   J = NROW(f_data)
   coefficients = array(0, K)
-  B_h_bounds = array(0,K)
   B_iid_bounds = array(0,K)
   lags = 1:K
-  for (h in lags){
-    coefficients[h] <- autocorrelation_coeff_h(f_data, h)
-    B_h_bounds[h] <- B_h_bound(f_data, h, M=M, low_disc=low_disc)
+  if (wwn_bound == TRUE) {
+    B_h_bounds = array(0,K)
+    for (h in lags){
+      coefficients[h] <- autocorrelation_coeff_h(f_data, h)
+      B_h_bounds[h] <- B_h_bound(f_data, h, M=M, low_disc=low_disc)
+    }
+  } else {
+    for (h in lags){
+      coefficients[h] <- autocorrelation_coeff_h(f_data, h)
+    }
   }
-  par(mfrow=c(1,1))
   plot(lags, coefficients, ylim=c(0,2 * max(coefficients)), type='h', xlab='Lag',
          ylab='Autocorrelation Coefficient', main = 'Autocorrelation Bounds')
-  lines(B_h_bounds, col='blue', lty='dotted')
   lines(rep(B_iid_bound(f_data), K), col='red', lty='solid')
-  legend('topleft',
-         legend=c('Estimated Autocorrelation Coefficients', 'WWN Bound', 'SWN Bound'),
-         col=c('black', 'blue', 'red'), lty=c('solid', 'dotted', 'solid'), cex=0.75)
+  if (wwn_bound == TRUE) {
+    lines(B_h_bounds, col='blue', lty='dotted')
+    legend('topleft',
+           legend=c('Estimated Autocorrelation Coefficients', 'WWN Bound', 'SWN Bound'),
+           col=c('black', 'blue', 'red'), lty=c('solid', 'dotted', 'solid'), cex=0.75)
+  } else {
+    legend('topleft',
+           legend=c('Estimated Autocorrelation Coefficients', 'SWN Bound'),
+           col=c('black', 'red'), lty=c('solid', 'solid'), cex=0.75)
+  }
 }

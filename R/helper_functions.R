@@ -9,7 +9,6 @@
 #' @param f_data the functional data matrix with observed functions in the columns
 #' @return A matrix of the same form as f_data containing the centered functional data.
 center <- function(f_data) {
-  c_f_data <- f_data - rowMeans(f_data)
-  c_f_data
+  f_data - rowMeans(f_data)
 }
 

@@ -4,12 +4,25 @@
 \alias{fport_test}
 \title{Compute Functional Hypothesis Tests}
 \usage{
-fport_test(f_data, test = "multi-lag", lag = NULL, iid = FALSE,
-  M = NULL, low_disc = FALSE, kernel = "Bartlett",
-  bandwidth = "adaptive", components = 3, bootstrap = FALSE,
-  block_size = "adaptive", moving = FALSE, straps = 300,
-  alpha = 0.05, complete_test = FALSE, suppress_raw_output = FALSE,
-  suppress_print_output = FALSE)
+fport_test(
+  f_data,
+  test = "multi-lag",
+  lag = NULL,
+  iid = FALSE,
+  M = NULL,
+  low_disc = FALSE,
+  kernel = "Bartlett",
+  bandwidth = "adaptive",
+  components = 3,
+  bootstrap = FALSE,
+  block_size = "adaptive",
+  moving = FALSE,
+  straps = 300,
+  alpha = 0.05,
+  complete_test = FALSE,
+  suppress_raw_output = FALSE,
+  suppress_print_output = FALSE
+)
 }
 \arguments{
 \item{f_data}{The functional data matrix with observed functions in the columns.}
