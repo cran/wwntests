@@ -14,11 +14,11 @@ test_that("fport_test Producing Valid Output for All Valid Combinations of Param
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
-  expect_success(expect_is(res <- fport_test(b1, test = 'single-lag', lag = 2, low_disc=TRUE), "list"))
+  expect_success(expect_is(res <- fport_test(b1, test = 'single-lag', lag = 2), "list"))
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
-  expect_success(expect_is(res <- fport_test(f1, test = 'single-lag', lag = 2, low_disc=TRUE), "list"))
+  expect_success(expect_is(res <- fport_test(f1, test = 'single-lag', lag = 2), "list"))
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
@@ -30,19 +30,19 @@ test_that("fport_test Producing Valid Output for All Valid Combinations of Param
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
-  expect_success(expect_is(res <- fport_test(b1, test = 'single-lag', lag = 2, low_disc=TRUE, M=100), "list"))
+  expect_success(expect_is(res <- fport_test(b1, test = 'single-lag', lag = 2, M=100), "list"))
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
-  expect_success(expect_is(res <- fport_test(f1, test = 'single-lag', lag = 2, low_disc=TRUE, M=100), "list"))
+  expect_success(expect_is(res <- fport_test(f1, test = 'single-lag', lag = 2, M=100), "list"))
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
-  expect_success(expect_is(res <- fport_test(b1, test = 'single-lag', lag = 20, alpha=0.1, M=500, low_disc=TRUE), "list"))
+  expect_success(expect_is(res <- fport_test(b1, test = 'single-lag', lag = 20, alpha=0.1, M=500), "list"))
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
-  expect_success(expect_is(res <- fport_test(f1, test = 'single-lag', lag = 20, alpha=0.1, M=500, low_disc=TRUE), "list"))
+  expect_success(expect_is(res <- fport_test(f1, test = 'single-lag', lag = 20, alpha=0.1, M=500), "list"))
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
@@ -104,11 +104,11 @@ test_that("fport_test Producing Valid Output for All Valid Combinations of Param
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
-  expect_success(expect_is(res <- fport_test(b1, test = 'multi-lag', lag = 20, low_disc=TRUE), "list"))
+  expect_success(expect_is(res <- fport_test(b1, test = 'multi-lag', lag = 20), "list"))
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
-  expect_success(expect_is(res <- fport_test(f1, test = 'multi-lag', lag = 20, low_disc=TRUE), "list"))
+  expect_success(expect_is(res <- fport_test(f1, test = 'multi-lag', lag = 20), "list"))
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
@@ -120,11 +120,11 @@ test_that("fport_test Producing Valid Output for All Valid Combinations of Param
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
-  expect_success(expect_is(res <- fport_test(b1, test = 'multi-lag', lag = 5, alpha=0.1, M=100, low_disc=TRUE), "list"))
+  expect_success(expect_is(res <- fport_test(b1, test = 'multi-lag', lag = 5, alpha=0.1, M=100), "list"))
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 
-  expect_success(expect_is(res <- fport_test(f1, test = 'multi-lag', lag = 5, alpha=0.1, M=100, low_disc=TRUE), "list"))
+  expect_success(expect_is(res <- fport_test(f1, test = 'multi-lag', lag = 5, alpha=0.1, M=100), "list"))
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
 

@@ -10,7 +10,6 @@ Q_WS_hyp_test(
   alpha = 0.05,
   iid = FALSE,
   M = NULL,
-  low_disc = FALSE,
   bootstrap = FALSE,
   block_size = "adaptive",
   straps = 300,
@@ -29,9 +28,6 @@ By default is FALSE, in which the hypothesis test will use a weak-white noise as
 
 \item{M}{Number of samples to take when applying a Monte-Carlo approximation}
 
-\item{low_disc}{Boolean value indicating whether or not to use low-discrepancy sampling in the Monte
-Carlo method. Note, low-discrepancy sampling will yield deterministic results.}
-
 \item{bootstrap}{boolean value, if given TRUE, the hypothesis test is done by approximating the
 limiting distribution of the test statistic via a block bootstrap algorithm. FALSE by default}
 
@@ -47,6 +43,6 @@ A list containing the p-value, the quantile, and a boolean value indicating whet
 hypothesis is rejected.
 }
 \description{
-\code{Q_WS_hyp_test} Computes the size alpha test of a single lag hypothesis under a weak white noise
+`Q_WS_hyp_test` Computes the size alpha test of a single lag hypothesis under a weak white noise
 or strong white noise assumption using a Welch-Satterthwaite Approximation.
 }

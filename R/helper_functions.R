@@ -4,7 +4,7 @@
 # roxygen comments:
 #' Center functional data
 #'
-#' \code{center} Centers the given functional data
+#' `center` Centers the given functional data
 #'
 #' @param f_data the functional data matrix with observed functions in the columns
 #' @return A matrix of the same form as f_data containing the centered functional data.

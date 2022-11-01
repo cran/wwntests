@@ -1,4 +1,4 @@
-#' \code{brown_motion} Creates at J x N matrix, containing N independent Brownian motion sample paths in
+#' `brown_motion` Creates at J x N matrix, containing N independent Brownian motion sample paths in
 #' each of the columns.
 #'
 #' @param N the number of independent Brownian motion sample paths to compute.
@@ -19,7 +19,7 @@ brown_motion <- function(N, J) {
 }
 
 
-#' \code{fgarch_1_1} Simulates an fGARCH(1,1) process with N independent observations, each observed
+#' `fgarch_1_1` Simulates an fGARCH(1,1) process with N independent observations, each observed
 #   discretely at J points on the interval [0,1]. Uses the Ornstein-Uhlenbeck process.
 #'
 #' @param N the number of fGARCH(1,1) curves to sample.
@@ -67,7 +67,7 @@ fgarch_1_1 <- function(N, J, delta=0.01, burn_in=50) {
 }
 
 
-#' \code{far_1_S} Simulates an FAR(1,S)-fGARCH(1,1) process with N independent observations, each
+#' `far_1_S` Simulates an FAR(1,S)-fGARCH(1,1) process with N independent observations, each
 #'  observed discretely at J points on the interval [0,1].
 #'
 #' @param N the number of fGARCH(1,1) curves to sample.

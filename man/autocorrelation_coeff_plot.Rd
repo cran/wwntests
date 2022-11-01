@@ -9,7 +9,6 @@ autocorrelation_coeff_plot(
   K = 20,
   alpha = 0.05,
   M = NULL,
-  low_disc = FALSE,
   wwn_bound = TRUE
 )
 }
@@ -25,10 +24,6 @@ test. The default value is 0.05.}
 \item{M}{A positive Integer value. Determines the number of Monte-Carlo simulations employed in the
 Welch-Satterthwaite approximation of the limiting distribution of the test statistics, for each test.}
 
-\item{low_disc}{A Boolean value, FALSE by default. If given TRUE, uses low-discrepancy sampling in the
-Monte-Carlo method. Note, low-discrepancy sampling will yield deterministic results.
-Requires the 'fOptions' package.}
-
 \item{wwn_bound}{A Boolean value allowing the user to turn off the weak white noise bound. TRUE by default.
 Speeds up computation when FALSE.}
 }
@@ -38,7 +33,7 @@ white noise 1-alpha upper  confidence bound for each lag, as well as the constan
 noise 1-alpha confidence bound.
 }
 \description{
-\code{autocorrelation_coeff_plot} Computes the 1-alpha upper confidence bounds for the functional
+`autocorrelation_coeff_plot` Computes the 1-alpha upper confidence bounds for the functional
 autocorrelation coefficients at lags h = 1:K under both weak white noise (WWN) and strong white
 noise (SWN) assumptions. It plots the coefficients as well as the bounds for all lags h = 1:K.
 Note, the SWN bound is constant, while the WWN is dependent on the lag.
@@ -52,7 +47,7 @@ series form a strong white noise. Please see the vignette or the references for 
 \examples{
 b <- brown_motion(75, 40)
 autocorrelation_coeff_plot(b)
-autocorrelation_coeff_plot(b, M = 200, low_disc = TRUE)
+autocorrelation_coeff_plot(b, M = 200)
 
 }
 \references{

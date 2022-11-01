@@ -16,6 +16,6 @@ A 2-dimensional array, encoding the covariance matrix of the functional data for
 windows defined by i.
 }
 \description{
-\code{diagonal_covariance_i} Computes the approximate diagonal covariance matrix of the functional
+`diagonal_covariance_i` Computes the approximate diagonal covariance matrix of the functional
 data for lag windows defined by i.
 }

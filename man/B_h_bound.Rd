@@ -4,7 +4,7 @@
 \alias{B_h_bound}
 \title{Compute weak white noise confidence bound for autocorrelation coefficient.}
 \usage{
-B_h_bound(f_data, lag, alpha = 0.05, M = NULL, low_disc = FALSE)
+B_h_bound(f_data, lag, alpha = 0.05, M = NULL)
 }
 \arguments{
 \item{f_data}{the functional data matrix with observed functions in the columns}
@@ -14,15 +14,12 @@ B_h_bound(f_data, lag, alpha = 0.05, M = NULL, low_disc = FALSE)
 \item{alpha}{the significance level to be used in the hypothesis test}
 
 \item{M}{Number of samples to take when applying a Monte-Carlo approximation}
-
-\item{low_disc}{Boolean value indicating whether or not to use low-discrepancy sampling in the Monte
-Carlo method. Note, low-discrepancy sampling will yield deterministic results.}
 }
 \value{
 numeric value; the 1-alpha confidence bound for the functional autocorrelation
 coefficient at lag h under a weak white noise assumption.
 }
 \description{
-\code{B_h_bound} Computes an approximate asymptotic upper 1-alpha confidence bound for the functional
+`B_h_bound` Computes an approximate asymptotic upper 1-alpha confidence bound for the functional
 autocorrelation coefficient at lag h under a weak white noise assumption.
 }

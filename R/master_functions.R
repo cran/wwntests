@@ -1,6 +1,6 @@
 #' Compute Functional Hypothesis Tests
 #'
-#' \code{fport_test} Computes a variety of functional portmanteau hypothesis tests. All hypothesis tests in this
+#' `fport_test` Computes a variety of functional portmanteau hypothesis tests. All hypothesis tests in this
 #' package are accessible through this function.
 #'
 #' @param f_data The functional data matrix with observed functions in the columns.
@@ -15,9 +15,6 @@
 #' @param M Only used for the "single-lag" and "multi-lag" tests. A positive Integer. Determines the number of
 #' Monte-Carlo simulations employed in the Welch-Satterthwaite approximation of the limiting distribution of the
 #' test statistic.
-#' @param low_disc Only used for the "single-lag" and "multi-lag" tests. A Boolean value, FALSE by default.
-#' If given TRUE, uses low-discrepancy sampling in the Monte-Carlo method. Note, low-discrepancy sampling will
-#' yield deterministic results. Requires the 'fOptions' package.
 #' @param kernel Only used for the "spectral" test. A String, 'Bartlett' by default. Specifies the kernel to be
 #' used in the "spectral" test. Currently supported kernels are the 'Bartlett' and 'Parzen' kernels.
 #' @param bandwidth Only used for the "spectral" test. Either a String or a positive Integer value, 'adaptive' by
@@ -55,7 +52,7 @@
 #' conditions.
 #' The required parameter for this test are 'lag', which determines the lag at which the test is evaluated. If this
 #' parameter is left blank, it will take a default of 1.
-#' The optional parameters for this test are 'iid', 'M', 'low_disc', 'bootstrap', 'block_size', 'straps', 'moving',
+#' The optional parameters for this test are 'iid', 'M', 'bootstrap', 'block_size', 'straps', 'moving',
 #' and 'alpha'.
 #'
 #' The "multi-lag" portmanteau test is also based on the sample autocovariance function computed from the functional
@@ -65,7 +62,7 @@
 #' under conditional heteroscedasticity conditions.
 #' The required parameter for this test is 'lag', which determines the maximum lag at which the test is evaluated.
 #' If this parameter is left blank, it will take a default of 20.
-#' The optional parameters for this test are 'iid', 'M', 'low_disc', 'bootstrap', 'block_size', 'straps', 'moving',
+#' The optional parameters for this test are 'iid', 'M', 'bootstrap', 'block_size', 'straps', 'moving',
 #' and 'alpha'.
 #'
 #' The "spectral" portmanteau test is based on the spectral density operator. It essentially measures the proximity of a
@@ -117,7 +114,7 @@
 #' b <- brown_motion(250, 50)
 #' fport_test(b, test = 'single-lag', lag = 10)
 #' fport_test(b, test = 'multi-lag', lag = 10, alpha = 0.01)
-#' fport_test(b, test = 'single-lag', lag = 1, M = 250, low_disc = TRUE)
+#' fport_test(b, test = 'single-lag', lag = 1, M = 250)
 #' fport_test(b, test = 'spectral', kernel = 'Bartlett', bandwidth = 'static', alpha = 0.05)
 #' fport_test(b, test = 'spectral', alpha = 0.1, kernel = 'Parzen', bandwidth = 'adaptive')
 #' fport_test(b, test = 'independence', components = 3, lag = 3)
@@ -125,7 +122,7 @@
 #' @export
 #' @import stats
 fport_test <- function(f_data, test = 'multi-lag', lag=NULL, iid=FALSE, M=NULL,
-                       low_disc=FALSE, kernel = "Bartlett", bandwidth = "adaptive",
+                       kernel = "Bartlett", bandwidth = "adaptive",
                        components = 3, bootstrap=FALSE, block_size = "adaptive", moving=FALSE,
                        straps = 300, alpha=0.05, complete_test=FALSE,
                        suppress_raw_output = FALSE, suppress_print_output = FALSE) {
@@ -152,8 +149,8 @@ fport_test <- function(f_data, test = 'multi-lag', lag=NULL, iid=FALSE, M=NULL,
   if (alpha < 0 | alpha > 1) {
     stop("Invalid arguments, the significance level alpha must be between 0 and 1.")
   }
-  if (!is.logical(iid) | !is.logical(low_disc)) {
-    stop("Invalid arguments, the iid and low_disc parameters must be logical values.")
+  if (!is.logical(iid)) {
+    stop("Invalid arguments, the iid parameter must be logical values.")
   }
   if (!is.null(M)) {
     if (!all.equal(M, as.integer(M)) | M < 0) {
@@ -162,7 +159,7 @@ fport_test <- function(f_data, test = 'multi-lag', lag=NULL, iid=FALSE, M=NULL,
   }
   iid_error = base::simpleError("When iid = true, this function does not use Monte Carlo methods,
 and thus also does not support low-discrepancy sequence sampling or parallelization. Please change the parameters.")
-  if ((iid == TRUE) & ((low_disc == TRUE) | (!is.null(M)))) {
+  if ((iid == TRUE) & (!is.null(M))) {
     stop(iid_error)
   }
   if (complete_test == TRUE) {
@@ -195,12 +192,12 @@ and thus also does not support low-discrepancy sequence sampling or parallelizat
                         components = 16, lag = 10)$p_value
     m
   } else if (test == 'multi-lag') {
-    multi_lag_test(f_data, lag, M=M, low_disc = low_disc, iid=iid,
+    multi_lag_test(f_data, lag, M=M, iid=iid,
                    suppress_raw_output = suppress_raw_output,
                    suppress_print_output = suppress_print_output)
   } else if (test == 'single-lag') {
     single_lag_test(f_data, lag, alpha=alpha, iid=iid,
-                    M=M, low_disc=low_disc, bootstrap=bootstrap,
+                    M=M, bootstrap=bootstrap,
                     block_size=block_size, straps=straps, moving = moving,
                     suppress_raw_output = suppress_raw_output,
                     suppress_print_output = suppress_print_output)
@@ -238,7 +235,7 @@ Press [enter] if you would like to continue.")
 
 #' Plot Confidence Bounds of Estimated Functional Autocorrelation Coefficients
 #'
-#' \code{autocorrelation_coeff_plot} Computes the 1-alpha upper confidence bounds for the functional
+#' `autocorrelation_coeff_plot` Computes the 1-alpha upper confidence bounds for the functional
 #' autocorrelation coefficients at lags h = 1:K under both weak white noise (WWN) and strong white
 #' noise (SWN) assumptions. It plots the coefficients as well as the bounds for all lags h = 1:K.
 #' Note, the SWN bound is constant, while the WWN is dependent on the lag.
@@ -250,9 +247,6 @@ Press [enter] if you would like to continue.")
 #' test. The default value is 0.05.
 #' @param M A positive Integer value. Determines the number of Monte-Carlo simulations employed in the
 #' Welch-Satterthwaite approximation of the limiting distribution of the test statistics, for each test.
-#' @param low_disc A Boolean value, FALSE by default. If given TRUE, uses low-discrepancy sampling in the
-#' Monte-Carlo method. Note, low-discrepancy sampling will yield deterministic results.
-#' Requires the 'fOptions' package.
 #' @param wwn_bound A Boolean value allowing the user to turn off the weak white noise bound. TRUE by default.
 #' Speeds up computation when FALSE.
 #' @details This function computes and plots autocorrelation coefficients at lag h, for h in 1:K. It also
@@ -270,12 +264,12 @@ Press [enter] if you would like to continue.")
 #' @examples
 #' b <- brown_motion(75, 40)
 #' autocorrelation_coeff_plot(b)
-#' autocorrelation_coeff_plot(b, M = 200, low_disc = TRUE)
+#' autocorrelation_coeff_plot(b, M = 200)
 #'
 #' @export
 #' @import sde
 #' @importFrom graphics legend lines par plot
-autocorrelation_coeff_plot <- function(f_data, K=20, alpha=0.05, M=NULL, low_disc=FALSE,
+autocorrelation_coeff_plot <- function(f_data, K=20, alpha=0.05, M=NULL,
                                        wwn_bound=TRUE) {
   if ((K < 1) | (K %% 1 != 0)) {
     stop("The parameter 'K' must be a positive integer.")
@@ -291,7 +285,7 @@ autocorrelation_coeff_plot <- function(f_data, K=20, alpha=0.05, M=NULL, low_dis
     B_h_bounds = array(0,K)
     for (h in lags){
       coefficients[h] <- autocorrelation_coeff_h(f_data, h)
-      B_h_bounds[h] <- B_h_bound(f_data, h, M=M, low_disc=low_disc)
+      B_h_bounds[h] <- B_h_bound(f_data, h, M=M)
     }
   } else {
     for (h in lags){

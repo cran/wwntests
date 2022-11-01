@@ -16,6 +16,6 @@ Numeric value; the 1-alpha confidence bound for the functional autocorrelation c
 at lag h under a strong white noise assumption.
 }
 \description{
-\code{B_iid_bound} Computes an approximate asymptotic upper 1-alpha confidence bound for the functional
+`B_iid_bound` Computes an approximate asymptotic upper 1-alpha confidence bound for the functional
 autocorrelation coefficient at lag h under the assumption that f_data forms a strong white noise
 }

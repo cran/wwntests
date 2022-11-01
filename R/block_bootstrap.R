@@ -1,4 +1,4 @@
-#' \code{block_bootstrap} Performs a block bootstrap on the functional data f_data with block size b.
+#' `block_bootstrap` Performs a block bootstrap on the functional data f_data with block size b.
 #'
 #' @param f_data the functional data matrix with observed functions in the columns
 #' @param b the block size (of each block in each bootstrap sample)

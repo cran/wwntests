@@ -8,7 +8,6 @@ multi_lag_test(
   f_data,
   lag = 20,
   M = NULL,
-  low_disc = FALSE,
   iid = FALSE,
   alpha = 0.05,
   suppress_raw_output = FALSE,
@@ -21,10 +20,6 @@ multi_lag_test(
 \item{lag}{Positive integer value. The lag to use to compute the single lag test statistic}
 
 \item{M}{Positive integer value. Number of Monte-Carlo simulation for Welch-Satterthwaite approximation.}
-
-\item{low_disc}{A Boolean value, FALSE by default. If given TRUE, uses low-discrepancy sampling in the
-Monte-Carlo method. Note, low-discrepancy sampling will yield deterministic results.
-Requires the 'fOptions' package.}
 
 \item{iid}{A Boolean value, FALSE by default. If given TRUE, the hypothesis test will use a strong-white
 noise assumption (instead of a weak-white noise assumption).}
@@ -46,7 +41,7 @@ containing a short description of the test, the p-value, and additional informat
 suppress_print_output = FALSE.
 }
 \description{
-\code{multi_lag_test} Computes the multi-lag hypothesis test over a range of user-specified lags.
+`multi_lag_test` Computes the multi-lag hypothesis test over a range of user-specified lags.
 }
 \details{
 The "multi-lag" portmanteau test is also based on the sample autocovariance function computed from the

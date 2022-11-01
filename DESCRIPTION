@@ -1,10 +1,11 @@
 Package: wwntests
 Type: Package
 Title: Hypothesis Tests for Functional Time Series
-Version: 1.0.1
-Author: Daniel Petoukhov [aut, cre]
-Maintainer: Daniel Petoukhov <dvpetouk@uwaterloo.ca>
-Authors@R: person("Daniel", "Petoukhov", email = "dvpetouk@uwaterloo.ca", role = c("aut", "cre"))
+Version: 1.0.2
+Authors@R: c(
+    person("Mihyun", "Kim", email = "mihyun.kim@mail.wvu.edu", role = c("aut", "cre")),
+    person("Daniel", "Petoukhov", email = "dvpetouk@uwaterloo.ca", role = c("aut")))
+Maintainer: Mihyun Kim <mihyun.kim@mail.wvu.edu>
 Description: Provides an array of white noise hypothesis tests for functional data and related visualizations. 
   These include tests based on the norms of autocovariance operators that are built under both strong and weak 
   white noise assumptions. Additionally, tests based on the spectral density operator and on principal component
@@ -14,14 +15,16 @@ Description: Provides an array of white noise hypothesis tests for functional da
   respectively.
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
 Depends: R (>= 3.4.0)
 Imports: sde, stats, ftsa, rainbow, MASS, graphics
-Suggests: testthat, knitr, rmarkdown, fOptions, CompQuadForm, tensorA
-RoxygenNote: 7.0.2
+Suggests: testthat (>= 3.0.0), knitr, rmarkdown, CompQuadForm, tensorA
+RoxygenNote: 7.2.1.9000
 VignetteBuilder: knitr
-BugReports: https://github.com/jimthemadmanlahey/wwntests/issues
+BugReports: https://github.com/veritasmih/wwntests/issues
 NeedsCompilation: no
-Packaged: 2020-05-18 19:53:18 UTC; DanielTheGreat
+Packaged: 2022-10-27 20:39:05 UTC; mihyunkim
+Config/testthat/edition: 3
+Author: Mihyun Kim [aut, cre],
+  Daniel Petoukhov [aut]
 Repository: CRAN
-Date/Publication: 2020-05-18 20:10:02 UTC
+Date/Publication: 2022-11-01 15:10:02 UTC

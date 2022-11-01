@@ -14,7 +14,7 @@ A 2-dimensional matrix containing one of the two independent sums in the computa
 covariance.
 }
 \description{
-\code{iid_covariance_vec} A helper function used to compute one of the two independent sum terms in the
+`iid_covariance_vec` A helper function used to compute one of the two independent sum terms in the
 computation of the approximate covariance of the functional data under a strong white noise assumption;
 a vectorized version of iid_covariance.
 }

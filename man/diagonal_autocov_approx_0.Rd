@@ -13,5 +13,5 @@ diagonal_autocov_approx_0(f_data)
 A numeric value; integral approximation of the diagonal covariance of the functional data.
 }
 \description{
-\code{diagonal_autocov_approx_0} Computes the diagonal covariance of the given functional data.
+`diagonal_autocov_approx_0` Computes the diagonal covariance of the given functional data.
 }

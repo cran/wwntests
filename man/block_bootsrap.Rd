@@ -2,7 +2,7 @@
 % Please edit documentation in R/block_bootstrap.R
 \name{block_bootsrap}
 \alias{block_bootsrap}
-\title{\code{block_bootstrap} Performs a block bootstrap on the functional data f_data with block size b.}
+\title{`block_bootstrap` Performs a block bootstrap on the functional data f_data with block size b.}
 \usage{
 block_bootsrap(f_data, b, B = 300, moving = FALSE)
 }
@@ -22,5 +22,5 @@ Returns a list of B elements, each element being a block bootstrap sample in the
 as the original functional data f_data.
 }
 \description{
-\code{block_bootstrap} Performs a block bootstrap on the functional data f_data with block size b.
+`block_bootstrap` Performs a block bootstrap on the functional data f_data with block size b.
 }

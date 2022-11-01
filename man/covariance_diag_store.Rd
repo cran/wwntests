@@ -16,6 +16,6 @@ A list containing K 2-dimensional arrays containing the diagonal covariance matr
 functional data, for lags h in the range 1:K.
 }
 \description{
-\code{covariance_diag_store} Creates a list storage of approximate diagonal covariances computed
+`covariance_diag_store` Creates a list storage of approximate diagonal covariances computed
 by the function diagonal_covariance_i
 }

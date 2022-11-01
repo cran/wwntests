@@ -13,5 +13,5 @@ parzen_kernel(x)
 A scalar value; the value of the Parzen kernel function at the point value x.
 }
 \description{
-\code{parzen_kernel} Computes the Parzen kernel function at a given point value.
+`parzen_kernel` Computes the Parzen kernel function at a given point value.
 }

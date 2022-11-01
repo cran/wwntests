@@ -2,7 +2,7 @@
 % Please edit documentation in R/data_simulations.R
 \name{fgarch_1_1}
 \alias{fgarch_1_1}
-\title{\code{fgarch_1_1} Simulates an fGARCH(1,1) process with N independent observations, each observed}
+\title{`fgarch_1_1` Simulates an fGARCH(1,1) process with N independent observations, each observed}
 \usage{
 fgarch_1_1(N, J, delta = 0.01, burn_in = 50)
 }
@@ -20,7 +20,7 @@ A list containing two J x N matrices, the former containing the sample of fGARCH
 curves and the latter containing the respective variance values.
 }
 \description{
-\code{fgarch_1_1} Simulates an fGARCH(1,1) process with N independent observations, each observed
+`fgarch_1_1` Simulates an fGARCH(1,1) process with N independent observations, each observed
 }
 \examples{
 f <- fgarch_1_1(100, 50)

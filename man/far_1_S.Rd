@@ -2,7 +2,7 @@
 % Please edit documentation in R/data_simulations.R
 \name{far_1_S}
 \alias{far_1_S}
-\title{\code{far_1_S} Simulates an FAR(1,S)-fGARCH(1,1) process with N independent observations, each
+\title{`far_1_S` Simulates an FAR(1,S)-fGARCH(1,1) process with N independent observations, each
  observed discretely at J points on the interval [0,1].}
 \usage{
 far_1_S(N, J, S, type = "IID", burn_in = 50)
@@ -25,7 +25,7 @@ is 'fGARCH', which will assume that the errors follow an fGARCH(1,1) process.}
 A J x N matrix containing FAR(1,S) functional data in the columns.
 }
 \description{
-\code{far_1_S} Simulates an FAR(1,S)-fGARCH(1,1) process with N independent observations, each
+`far_1_S` Simulates an FAR(1,S)-fGARCH(1,1) process with N independent observations, each
  observed discretely at J points on the interval [0,1].
 }
 \examples{

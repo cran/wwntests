@@ -47,7 +47,7 @@ uncorrelated series. Unlike the "single-lag" and "multi-lag" tests, this test is
 series, and may not hold under functional conditionally heteroscedastic assumptions.
 }
 \details{
-\code{spectral_test} Computes the spectral hypothesis test under a user-specified kernel function and
+`spectral_test` Computes the spectral hypothesis test under a user-specified kernel function and
 bandwidth; automatic bandwidth selection methods are provided.
 }
 \examples{

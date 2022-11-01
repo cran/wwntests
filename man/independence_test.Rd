@@ -40,7 +40,7 @@ containing a short description of the test, the p-value, and additional informat
 suppress_print_output = FALSE.
 }
 \description{
-\code{independence_test} Computes the independence test with a user-specified number of principal components
+`independence_test` Computes the independence test with a user-specified number of principal components
 and range of lags.
 }
 \details{

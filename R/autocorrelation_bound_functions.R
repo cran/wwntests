@@ -5,7 +5,7 @@
 # roxygen comments:
 #' Compute the diagonal covariance
 #'
-#' \code{diagonal_autocov_approx_0} Computes the diagonal covariance of the given functional data.
+#' `diagonal_autocov_approx_0` Computes the diagonal covariance of the given functional data.
 #'
 #' @param f_data the functional data matrix with observed functions in the columns
 #' @return A numeric value; integral approximation of the diagonal covariance of the functional data.
@@ -22,7 +22,7 @@ diagonal_autocov_approx_0 <- function(f_data) {
 # Output: scalar value of the approximate functional autocorrelation coefficient at lag h.
 #
 # roxygen comments:
-#' Computes the approximate functional autocorrelation coefficient at a given lag.
+#' `autocorrelation_coeff_h` Computes the approximate functional autocorrelation coefficient at a given lag.
 #'
 #' @param f_data the functional data matrix with observed functions in the columns
 #' @param lag the lag to use to compute the single lag test statistic
@@ -42,28 +42,24 @@ autocorrelation_coeff_h <- function(f_data, lag) {
 #        lag = the lag for which to ccmpute the bound
 #        alpha = significance level of the bound
 #        M = optional argument specifying the sampling size in the related Monte Carlo method
-#        low_disc = boolean value specifiying whether or not to use low-discrepancy sampling
-#                   for the Monte-Carlo method (only Sobol Sampling is currently supported)
 # Output: scalar value of the 1-alpha confidence bound for the functional autocorrelation
 #         coefficient at lag h under a weak white noise assumption.
 #
 # roxygen comments:
 #' Compute weak white noise confidence bound for autocorrelation coefficient.
 #'
-#' \code{B_h_bound} Computes an approximate asymptotic upper 1-alpha confidence bound for the functional
+#' `B_h_bound` Computes an approximate asymptotic upper 1-alpha confidence bound for the functional
 #' autocorrelation coefficient at lag h under a weak white noise assumption.
 #'
 #' @param f_data the functional data matrix with observed functions in the columns
 #' @param lag the lag to use to compute the single lag test statistic
 #' @param alpha the significance level to be used in the hypothesis test
 #' @param M Number of samples to take when applying a Monte-Carlo approximation
-#' @param low_disc Boolean value indicating whether or not to use low-discrepancy sampling in the Monte
-#' Carlo method. Note, low-discrepancy sampling will yield deterministic results.
 #' @return numeric value; the 1-alpha confidence bound for the functional autocorrelation
 #' coefficient at lag h under a weak white noise assumption.
-B_h_bound <- function(f_data, lag, alpha=0.05, M=NULL, low_disc=FALSE) {
+B_h_bound <- function(f_data, lag, alpha=0.05, M=NULL) {
   N <- NCOL(f_data)
-  quantile = Q_WS_quantile(f_data, lag, alpha=alpha, M=M, low_disc=low_disc)$quantile
+  quantile = Q_WS_quantile(f_data, lag, alpha=alpha, M=M)$quantile
   num <- sqrt(quantile)
   denom <- sqrt(N) * diagonal_autocov_approx_0(f_data)
   bound <- num / denom
@@ -81,7 +77,7 @@ B_h_bound <- function(f_data, lag, alpha=0.05, M=NULL, low_disc=FALSE) {
 # roxygen comments:
 #' Compute strong white noise confidence bound for autocorrelation coefficient.
 #'
-#' \code{B_iid_bound} Computes an approximate asymptotic upper 1-alpha confidence bound for the functional
+#' `B_iid_bound` Computes an approximate asymptotic upper 1-alpha confidence bound for the functional
 #' autocorrelation coefficient at lag h under the assumption that f_data forms a strong white noise
 #'
 #' @param f_data the functional data matrix with observed functions in the columns

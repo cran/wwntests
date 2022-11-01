@@ -10,7 +10,6 @@ fport_test(
   lag = NULL,
   iid = FALSE,
   M = NULL,
-  low_disc = FALSE,
   kernel = "Bartlett",
   bandwidth = "adaptive",
   components = 3,
@@ -41,10 +40,6 @@ the hypothesis test will use a strong-white noise assumption (instead of a weak-
 \item{M}{Only used for the "single-lag" and "multi-lag" tests. A positive Integer. Determines the number of
 Monte-Carlo simulations employed in the Welch-Satterthwaite approximation of the limiting distribution of the
 test statistic.}
-
-\item{low_disc}{Only used for the "single-lag" and "multi-lag" tests. A Boolean value, FALSE by default.
-If given TRUE, uses low-discrepancy sampling in the Monte-Carlo method. Note, low-discrepancy sampling will
-yield deterministic results. Requires the 'fOptions' package.}
 
 \item{kernel}{Only used for the "spectral" test. A String, 'Bartlett' by default. Specifies the kernel to be
 used in the "spectral" test. Currently supported kernels are the 'Bartlett' and 'Parzen' kernels.}
@@ -95,7 +90,7 @@ suppress_print_output = FALSE. If 'complete-test' = TRUE, will return a 1-column
 the p-values for a variety of tests, which are given short descriptions in the index of the table.
 }
 \description{
-\code{fport_test} Computes a variety of functional portmanteau hypothesis tests. All hypothesis tests in this
+`fport_test` Computes a variety of functional portmanteau hypothesis tests. All hypothesis tests in this
 package are accessible through this function.
 }
 \details{
@@ -106,7 +101,7 @@ This test is designed for stationary functional time-series, and is valid under 
 conditions.
 The required parameter for this test are 'lag', which determines the lag at which the test is evaluated. If this
 parameter is left blank, it will take a default of 1.
-The optional parameters for this test are 'iid', 'M', 'low_disc', 'bootstrap', 'block_size', 'straps', 'moving',
+The optional parameters for this test are 'iid', 'M', 'bootstrap', 'block_size', 'straps', 'moving',
 and 'alpha'.
 
 The "multi-lag" portmanteau test is also based on the sample autocovariance function computed from the functional
@@ -116,7 +111,7 @@ maximum lag K. More specifically, it tests the null hypothesis that the first K 
 under conditional heteroscedasticity conditions.
 The required parameter for this test is 'lag', which determines the maximum lag at which the test is evaluated.
 If this parameter is left blank, it will take a default of 20.
-The optional parameters for this test are 'iid', 'M', 'low_disc', 'bootstrap', 'block_size', 'straps', 'moving',
+The optional parameters for this test are 'iid', 'M', 'bootstrap', 'block_size', 'straps', 'moving',
 and 'alpha'.
 
 The "spectral" portmanteau test is based on the spectral density operator. It essentially measures the proximity of a
@@ -147,7 +142,7 @@ return a statistic, and thus returns a list with only 2 elements if suppress_raw
 b <- brown_motion(250, 50)
 fport_test(b, test = 'single-lag', lag = 10)
 fport_test(b, test = 'multi-lag', lag = 10, alpha = 0.01)
-fport_test(b, test = 'single-lag', lag = 1, M = 250, low_disc = TRUE)
+fport_test(b, test = 'single-lag', lag = 1, M = 250)
 fport_test(b, test = 'spectral', kernel = 'Bartlett', bandwidth = 'static', alpha = 0.05)
 fport_test(b, test = 'spectral', alpha = 0.1, kernel = 'Parzen', bandwidth = 'adaptive')
 fport_test(b, test = 'independence', components = 3, lag = 3)

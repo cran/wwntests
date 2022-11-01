@@ -1,6 +1,6 @@
 #' Single-Lag Hypothesis Test
 #'
-#' \code{single_lag_test} Computes the single-lag hypothesis test at a single user-specified lag.
+#' `single_lag_test` Computes the single-lag hypothesis test at a single user-specified lag.
 #'
 #' @param f_data The functional data matrix with observed functions in the columns
 #' @param lag Positive integer value. The lag to use to compute the single lag test statistic.
@@ -10,9 +10,6 @@
 #' @param iid A Boolean value, FALSE by default. If given TRUE, the hypothesis test will use a strong-white
 #' noise assumption (instead of a weak-white noise assumption).
 #' @param M Positive integer value. Number of Monte-Carlo simulations for the Welch-Satterthwaite approximation.
-#' @param low_disc A Boolean value, FALSE by default. If given TRUE, uses low-discrepancy sampling in the
-#' Monte-Carlo method. Note, low-discrepancy sampling will yield deterministic results.
-#' Requires the 'fOptions' package.
 #' @param bootstrap A Boolean value, FALSE by default If given TRUE, the hypothesis test is done by
 #' approximating the limiting distribution of the test statistic via a block bootstrap process.
 #' @param block_size A positive Integer value, with the default value being computed via the adaptive
@@ -48,15 +45,15 @@
 #' @import stats
 #' @export
 single_lag_test <- function(f_data, lag=1, alpha=0.05, iid=FALSE,
-                          M=NULL, low_disc=FALSE, bootstrap=FALSE,
+                          M=NULL, bootstrap=FALSE,
                           block_size='adaptive', straps=300, moving = FALSE,
                           suppress_raw_output=FALSE, suppress_print_output=FALSE) {
-  if (bootstrap == TRUE & (iid == TRUE | low_disc == TRUE)) {
+  if (bootstrap == TRUE & (iid == TRUE)) {
     stop("Bootstrapping this test only requires the lag parameter
          (and optionally, a significance level).")
   }
   if (suppress_raw_output == TRUE & suppress_print_output == TRUE) {
-    stop("Current choice of parameters will produce no output. Atleast one of the parameters
+    stop("Current choice of parameters will produce no output. At least one of the parameters
          'suppress_raw_output' or 'suppress_print_output' must be FALSE.")
   }
   if (bootstrap == TRUE) {
@@ -82,7 +79,7 @@ single_lag_test <- function(f_data, lag=1, alpha=0.05, iid=FALSE,
       results[-4]
     }
   } else if (iid  == FALSE) {
-    results <- Q_WS_hyp_test(f_data, lag, alpha=alpha, M=M, low_disc=low_disc)
+    results <- Q_WS_hyp_test(f_data, lag, alpha=alpha, M=M)
     if (suppress_print_output == FALSE) {
       title_print <- sprintf("Single-Lag Test\n\n")
       null_print <- sprintf("null hypothesis: the series is uncorrelated at lag %d\n", lag)
@@ -116,7 +113,7 @@ single_lag_test <- function(f_data, lag=1, alpha=0.05, iid=FALSE,
 
 #' Multi-Lag Hypothesis Test
 #'
-#' \code{multi_lag_test} Computes the multi-lag hypothesis test over a range of user-specified lags.
+#' `multi_lag_test` Computes the multi-lag hypothesis test over a range of user-specified lags.
 #'
 #' @param f_data the functional data matrix with observed functions in the columns
 #' @param lag Positive integer value. The lag to use to compute the single lag test statistic
@@ -126,9 +123,6 @@ single_lag_test <- function(f_data, lag=1, alpha=0.05, iid=FALSE,
 #' @param iid A Boolean value, FALSE by default. If given TRUE, the hypothesis test will use a strong-white
 #' noise assumption (instead of a weak-white noise assumption).
 #' @param M Positive integer value. Number of Monte-Carlo simulation for Welch-Satterthwaite approximation.
-#' @param low_disc A Boolean value, FALSE by default. If given TRUE, uses low-discrepancy sampling in the
-#' Monte-Carlo method. Note, low-discrepancy sampling will yield deterministic results.
-#' Requires the 'fOptions' package.
 #' @param suppress_raw_output Boolean value, FALSE by default. If TRUE, the function will not return the list
 #' containing the p-value, quantile, and statistic.
 #' @param suppress_print_output Boolean value, FALSE by default. If TRUE, the function will not print any
@@ -154,7 +148,7 @@ single_lag_test <- function(f_data, lag=1, alpha=0.05, iid=FALSE,
 #'
 #' @import stats
 #' @export
-multi_lag_test <- function(f_data, lag = 20, M=NULL, low_disc=FALSE, iid=FALSE,
+multi_lag_test <- function(f_data, lag = 20, M=NULL, iid=FALSE,
                            alpha=0.05, suppress_raw_output=FALSE,
                            suppress_print_output=FALSE) {
   K <- lag
@@ -163,7 +157,7 @@ multi_lag_test <- function(f_data, lag = 20, M=NULL, low_disc=FALSE, iid=FALSE,
          'suppress_raw_output' or 'suppress_print_output' must be FALSE.")
   }
   if (iid == FALSE) {
-    results <- V_WS_quantile(f_data, K, alpha=alpha, M=M, low_disc=low_disc)
+    results <- V_WS_quantile(f_data, K, alpha=alpha, M=M)
     if (suppress_print_output == FALSE) {
       title_print <- sprintf("Multi-Lag Test\n\n")
       test_type <- 'the series is a weak white noise\n'
@@ -199,7 +193,7 @@ multi_lag_test <- function(f_data, lag = 20, M=NULL, low_disc=FALSE, iid=FALSE,
 
 #' Spectral Density Test
 #'
-#' \code{spectral_test} Computes the spectral hypothesis test under a user-specified kernel function and
+#' `spectral_test` Computes the spectral hypothesis test under a user-specified kernel function and
 #' bandwidth; automatic bandwidth selection methods are provided.
 #'
 #' @param f_data The functional data matrix with observed functions in the columns
@@ -275,7 +269,7 @@ spectral_test <- function(f_data, kernel = 'Bartlett', bandwidth = 'adaptive', a
 
 #' Independence Test
 #'
-#' \code{independence_test} Computes the independence test with a user-specified number of principal components
+#' `independence_test` Computes the independence test with a user-specified number of principal components
 #' and range of lags.
 #'
 #' @param f_data the functional data matrix with observed functions in the columns

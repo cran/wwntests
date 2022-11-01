@@ -13,5 +13,5 @@ daniell_kernel(x)
 A scalar value; the value of the Daniell kernel function at the point value x.
 }
 \description{
-\code{daniell_kernel} Computes the Daniell kernel function at a given point value.
+`daniell_kernel` Computes the Daniell kernel function at a given point value.
 }

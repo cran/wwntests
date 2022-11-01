@@ -2,7 +2,7 @@
 % Please edit documentation in R/autocorrelation_bound_functions.R
 \name{autocorrelation_coeff_h}
 \alias{autocorrelation_coeff_h}
-\title{Computes the approximate functional autocorrelation coefficient at a given lag.}
+\title{`autocorrelation_coeff_h` Computes the approximate functional autocorrelation coefficient at a given lag.}
 \usage{
 autocorrelation_coeff_h(f_data, lag)
 }
@@ -15,5 +15,5 @@ autocorrelation_coeff_h(f_data, lag)
 numeric value; the approximate functional autocorrelation coefficient at lag h.
 }
 \description{
-Computes the approximate functional autocorrelation coefficient at a given lag.
+`autocorrelation_coeff_h` Computes the approximate functional autocorrelation coefficient at a given lag.
 }

@@ -10,7 +10,6 @@ single_lag_test(
   alpha = 0.05,
   iid = FALSE,
   M = NULL,
-  low_disc = FALSE,
   bootstrap = FALSE,
   block_size = "adaptive",
   straps = 300,
@@ -32,10 +31,6 @@ hypothesis test. The default value is 0.05. Note, the significance value is only
 noise assumption (instead of a weak-white noise assumption).}
 
 \item{M}{Positive integer value. Number of Monte-Carlo simulations for the Welch-Satterthwaite approximation.}
-
-\item{low_disc}{A Boolean value, FALSE by default. If given TRUE, uses low-discrepancy sampling in the
-Monte-Carlo method. Note, low-discrepancy sampling will yield deterministic results.
-Requires the 'fOptions' package.}
 
 \item{bootstrap}{A Boolean value, FALSE by default If given TRUE, the hypothesis test is done by
 approximating the limiting distribution of the test statistic via a block bootstrap process.}
@@ -63,7 +58,7 @@ containing a short description of the test, the p-value, and additional informat
 suppress_print_output = FALSE.
 }
 \description{
-\code{single_lag_test} Computes the single-lag hypothesis test at a single user-specified lag.
+`single_lag_test` Computes the single-lag hypothesis test at a single user-specified lag.
 }
 \details{
 The "single-lag" portmanteau test is based on the sample autocovariance function computed from the

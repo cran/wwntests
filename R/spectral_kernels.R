@@ -1,6 +1,6 @@
 #' Bartlett Kernel Function
 #'
-#' \code{bartlett_kernel} Computes the Bartlett kernel function at a given point value.
+#' `bartlett_kernel` Computes the Bartlett kernel function at a given point value.
 #' @param x the point value at which the kernel function is evaluated
 #' @return A scalar value; the value of the Bartlett kernel function at the point value x.
 bartlett_kernel <- function(x) {
@@ -18,7 +18,7 @@ bartlett_kernel <- function(x) {
 
 #' Parzen Kernel Function
 #'
-#' \code{parzen_kernel} Computes the Parzen kernel function at a given point value.
+#' `parzen_kernel` Computes the Parzen kernel function at a given point value.
 #' @param x the point value at which the kernel function is evaluated
 #' @return A scalar value; the value of the Parzen kernel function at the point value x.
 parzen_kernel <- function(x) {
@@ -40,7 +40,7 @@ parzen_kernel <- function(x) {
 
 #' Daniell Kernel Function
 #'
-#' \code{daniell_kernel} Computes the Daniell kernel function at a given point value.
+#' `daniell_kernel` Computes the Daniell kernel function at a given point value.
 #' @param x the point value at which the kernel function is evaluated
 #' @return A scalar value; the value of the Daniell kernel function at the point value x.
 daniell_kernel <- function(x) {

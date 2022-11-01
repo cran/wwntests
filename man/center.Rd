@@ -13,5 +13,5 @@ center(f_data)
 A matrix of the same form as f_data containing the centered functional data.
 }
 \description{
-\code{center} Centers the given functional data
+`center` Centers the given functional data
 }

@@ -18,6 +18,6 @@ A numeric value; the covariance of the functional data at a point for lag
 windows defined by i,j.
 }
 \description{
-\code{scalar_covariance_i_j} Computes the approximate covariance at a point of the functional data
+`scalar_covariance_i_j` Computes the approximate covariance at a point of the functional data
 for lag windows defined by i,j; a scalarized version of covariance_i_j that takes point estimates.
 }

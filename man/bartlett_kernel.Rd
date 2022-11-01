@@ -13,5 +13,5 @@ bartlett_kernel(x)
 A scalar value; the value of the Bartlett kernel function at the point value x.
 }
 \description{
-\code{bartlett_kernel} Computes the Bartlett kernel function at a given point value.
+`bartlett_kernel` Computes the Bartlett kernel function at a given point value.
 }
