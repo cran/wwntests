@@ -1,30 +1,33 @@
 Package: wwntests
 Type: Package
 Title: Hypothesis Tests for Functional Time Series
-Version: 1.0.2
+Version: 1.1.0
 Authors@R: c(
     person("Mihyun", "Kim", email = "mihyun.kim@mail.wvu.edu", role = c("aut", "cre")),
     person("Daniel", "Petoukhov", email = "dvpetouk@uwaterloo.ca", role = c("aut")))
 Maintainer: Mihyun Kim <mihyun.kim@mail.wvu.edu>
-Description: Provides an array of white noise hypothesis tests for functional data and related visualizations. 
+Description: Provides a collection of white noise hypothesis tests for functional time series and related visualizations. 
   These include tests based on the norms of autocovariance operators that are built under both strong and weak 
   white noise assumptions. Additionally, tests based on the spectral density operator and on principal component
-  dimensional reduction are included, which are built under strong white noise assumptions. These methods are
-  described in Kokoszka et al. (2017) <doi:10.1016/j.jmva.2017.08.004>, Characiejus and Rice (2019) 
-  <doi:10.1016/j.ecosta.2019.01.003>, and Gabrys and Kokoszka (2007) <doi:10.1198/016214507000001111>, 
+  dimensional reduction are included, which are built under strong white noise assumptions. 
+  Also, this package provides goodness-of-fit tests for functional autoregressive of order 1 models.
+  These methods are described in Kokoszka et al. (2017) <doi:10.1016/j.jmva.2017.08.004>, Characiejus and Rice (2019) 
+  <doi:10.1016/j.ecosta.2019.01.003>, Gabrys and Kokoszka (2007) <doi:10.1198/016214507000001111>, 
+  and Kim et al. (2023) <doi: 10.1214/23-SS143>
   respectively.
 License: GPL-3
 Encoding: UTF-8
-Depends: R (>= 3.4.0)
-Imports: sde, stats, ftsa, rainbow, MASS, graphics
+Depends: R (>= 3.5.0)
+Imports: sde, stats, ftsa, rainbow, MASS, graphics, fda
 Suggests: testthat (>= 3.0.0), knitr, rmarkdown, CompQuadForm, tensorA
-RoxygenNote: 7.2.1.9000
 VignetteBuilder: knitr
+Language: en-US
+RoxygenNote: 7.2.3
 BugReports: https://github.com/veritasmih/wwntests/issues
-NeedsCompilation: no
-Packaged: 2022-10-27 20:39:05 UTC; mihyunkim
 Config/testthat/edition: 3
+NeedsCompilation: no
+Packaged: 2023-12-01 04:18:27 UTC; miyhun
 Author: Mihyun Kim [aut, cre],
   Daniel Petoukhov [aut]
 Repository: CRAN
-Date/Publication: 2022-11-01 15:10:02 UTC
+Date/Publication: 2023-12-01 13:40:02 UTC

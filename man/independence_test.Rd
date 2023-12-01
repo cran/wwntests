@@ -14,7 +14,7 @@ independence_test(
 )
 }
 \arguments{
-\item{f_data}{the functional data matrix with observed functions in the columns}
+\item{f_data}{The functional data matrix with observed functions in the columns}
 
 \item{components}{A positive Integer specifying the number of principal components to project the data on;
 ranked in order of importance (importance is determined by the proportion of the variance that is explained

@@ -32,7 +32,7 @@ noise assumption (instead of a weak-white noise assumption).}
 
 \item{M}{Positive integer value. Number of Monte-Carlo simulations for the Welch-Satterthwaite approximation.}
 
-\item{bootstrap}{A Boolean value, FALSE by default If given TRUE, the hypothesis test is done by
+\item{bootstrap}{A Boolean value, FALSE by default. If given TRUE, the hypothesis test is done by
 approximating the limiting distribution of the test statistic via a block bootstrap process.}
 
 \item{block_size}{A positive Integer value, with the default value being computed via the adaptive
@@ -42,7 +42,7 @@ bootstrap sample) if the test is being bootstrapped.}
 \item{straps}{A positive Integer, with a default value of 300. Determines the number of bootstrap samples
 to take if the test is being bootstrapped. Only used if 'bootstrap' == TRUE.}
 
-\item{moving}{A Boolean value, FALSE by default If given TRUE, the performed block bootstrap will be moving
+\item{moving}{A Boolean value, FALSE by default. If given TRUE, the performed block bootstrap will be moving
 rather than stationary.}
 
 \item{suppress_raw_output}{Boolean value, FALSE by default. If TRUE, the function will not return the list
@@ -58,7 +58,7 @@ containing a short description of the test, the p-value, and additional informat
 suppress_print_output = FALSE.
 }
 \description{
-`single_lag_test` Computes the single-lag hypothesis test at a single user-specified lag.
+`single_lag_test` computes the single-lag hypothesis test at a single user-specified lag.
 }
 \details{
 The "single-lag" portmanteau test is based on the sample autocovariance function computed from the

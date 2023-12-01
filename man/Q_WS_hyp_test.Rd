@@ -17,32 +17,37 @@ Q_WS_hyp_test(
 )
 }
 \arguments{
-\item{f_data}{the functional data matrix with observed functions in the columns}
+\item{f_data}{The functional data matrix with observed functions in the columns}
 
-\item{lag}{the lag to use to compute the single lag test statistic}
+\item{lag}{Positive integer value. The lag to use to compute the single lag test statistic.}
 
-\item{alpha}{the significance level to be used in the hypothesis test}
+\item{alpha}{Numeric value between 0 and 1 specifying the significance level to be used in the specified
+hypothesis test. The default value is 0.05. Note, the significance value is only ever used to compute the
+1-alpha quantile of the limiting distribution of the specified test's test statistic.}
 
-\item{iid}{boolean value, if given TRUE, the hypothesis test will use a strong-white noise assumption.
-By default is FALSE, in which the hypothesis test will use a weak-white noise assumption.}
+\item{iid}{A Boolean value, FALSE by default. If given TRUE, the hypothesis test will use a strong-white
+noise assumption (instead of a weak-white noise assumption).}
 
-\item{M}{Number of samples to take when applying a Monte-Carlo approximation}
+\item{M}{Positive integer value. Number of Monte-Carlo simulations for the Welch-Satterthwaite approximation.}
 
-\item{bootstrap}{boolean value, if given TRUE, the hypothesis test is done by approximating the
-limiting distribution of the test statistic via a block bootstrap algorithm. FALSE by default}
+\item{bootstrap}{A Boolean value, FALSE by default. If given TRUE, the hypothesis test is done by
+approximating the limiting distribution of the test statistic via a block bootstrap process.}
 
-\item{block_size}{the block size to be used in the block bootstrap method (in each bootstrap sample).
-10 by default.}
+\item{block_size}{A positive Integer value, with the default value being computed via the adaptive
+bandwidth selection method in the "spectral" test. Determines the block size (of each block in each
+bootstrap sample) if the test is being bootstrapped.}
 
-\item{straps}{the number of bootstrap samples to take; 300 by default}
+\item{straps}{A positive Integer, with a default value of 300. Determines the number of bootstrap samples
+to take if the test is being bootstrapped. Only used if 'bootstrap' == TRUE.}
 
-\item{moving}{boolean value; determines whether or not the block bootstrap should be moving}
+\item{moving}{A Boolean value, FALSE by default. If given TRUE, the performed block bootstrap will be moving
+rather than stationary.}
 }
 \value{
 A list containing the p-value, the quantile, and a boolean value indicating whether or not the
 hypothesis is rejected.
 }
 \description{
-`Q_WS_hyp_test` Computes the size alpha test of a single lag hypothesis under a weak white noise
+`Q_WS_hyp_test` computes the size alpha test of a single lag hypothesis under a weak white noise
 or strong white noise assumption using a Welch-Satterthwaite Approximation.
 }

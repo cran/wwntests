@@ -219,5 +219,24 @@ test_that("fport_test Producing Valid Output for All Valid Combinations of Param
   expect_success(expect_is(res <- fport_test(f1, test = 'independence', components = 2, lag = 2), "list"))
   expect_success(expect_length(res, 3))
   expect_success(expect_equal(sum(is.na(res)), 0))
+
+  # Testing GOF_far test
+
+  expect_success(expect_is(res <- GOF_far(f1, lag = 10), "list"))
+  expect_success(expect_length(res, 3))
+  expect_success(expect_equal(sum(is.na(res)), 0))
+
+  expect_success(expect_is(res <- GOF_far(f1, lag = 20), "list"))
+  expect_success(expect_length(res, 3))
+  expect_success(expect_equal(sum(is.na(res)), 0))
+
+  expect_success(expect_is(res <- GOF_far(f1, lag = 8, M=250), "list"))
+  expect_success(expect_length(res, 3))
+  expect_success(expect_equal(sum(is.na(res)), 0))
+
+  expect_success(expect_is(res <- GOF_far(f1, lag = 5, alpha=0.1, M=100), "list"))
+  expect_success(expect_length(res, 3))
+  expect_success(expect_equal(sum(is.na(res)), 0))
+
 })
 

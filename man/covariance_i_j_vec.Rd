@@ -16,6 +16,6 @@ A 4-dimensional array, encoding the covariance tensor of the functional data for
 windows defined by i,j.
 }
 \description{
-`covariance_i_j_vec` Computes the approximate covariance tensor of the functional data for lag
+`covariance_i_j_vec` computes the approximate covariance tensor of the functional data for lag
 windows defined by i,j; a vectorized version of covariance_i_j.
 }

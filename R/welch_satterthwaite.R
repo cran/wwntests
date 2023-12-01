@@ -21,11 +21,8 @@ MCint_eta_approx_i_j <- function(f_data, i, j, M=NULL) {
     M = floor((max(150 - T, 0) + max(100-J,0) + (J / sqrt(2))))
   }
   rand_samp_mat <- matrix(nrow=M, ncol=4)
-  for (k in 1:4) {
-    rand_samp <- floor(J * runif(M, 0, 1))
-    rand_samp[which(rand_samp == 0)] = 1
-    rand_samp_mat[,k] <- rand_samp
-  }
+  rand_samp_mat <- cbind(sample(1:J, M, replace = TRUE),sample(1:J, M, replace = TRUE),sample(1:J, M, replace = TRUE),sample(1:J, M, replace = TRUE))
+
   eta_hat_i_j_sum <- 0
   for (k in 1:M) {
     cov <- scalar_covariance_i_j(f_data, i, j, rand_samp_mat[k,])
@@ -45,11 +42,8 @@ MCint_eta_approx_i_j_vec <- function(f_data, i, j, M=NULL) {
   N <- NCOL(f_data)
   M = floor((max(150 - N, 0) + max(100-J,0) + (J / sqrt(2))))
   rand_samp_mat <- matrix(nrow=M, ncol=4)
-  for (k in 1:4) {
-    rand_samp <- floor(J * runif(M, 0, 1))
-    rand_samp[which(rand_samp == 0)] = 1
-    rand_samp_mat[,k] <- rand_samp
-  }
+  rand_samp_mat <- cbind(sample(1:J, M, replace = TRUE),sample(1:J, M, replace = TRUE),sample(1:J, M, replace = TRUE),sample(1:J, M, replace = TRUE))
+
   eta_parts <- as.list(1:M)
   eta_parts <- lapply(eta_parts, function(k) scalar_covariance_i_j(f_data, i, j,
                                                           rand_samp_mat[k,]) ^ 2)

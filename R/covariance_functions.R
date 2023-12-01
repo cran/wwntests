@@ -7,7 +7,7 @@
 # roxygen comments:
 #' Compute the approximate autocovariance at specified lag
 #'
-#' `autocov_approx_h` Computes the approximate autocovariance for a given lag h of the functional
+#' `autocov_approx_h` computes the approximate autocovariance for a given lag h of the functional
 #' data
 #'
 #' @param f_data the functional data matrix with observed functions in the columns
@@ -33,7 +33,7 @@ autocov_approx_h <- function(f_data, lag) {
 # roxygen comments:
 #' Compute the approximate covariance tensor for lag windows defined by i,j
 #'
-#' `covariance_i_j` Computes the approximate covariance tensor of the functional data for lag
+#' `covariance_i_j` computes the approximate covariance tensor of the functional data for lag
 #' windows defined by i,j.
 #'
 #' @param f_data the functional data matrix with observed functions in the columns
@@ -60,7 +60,7 @@ covariance_i_j <- function(f_data, i, j) {
 # roxygen comments:
 #' Compute the approximate covariance tensor for lag windows defined by i,j
 #'
-#' `covariance_i_j_vec` Computes the approximate covariance tensor of the functional data for lag
+#' `covariance_i_j_vec` computes the approximate covariance tensor of the functional data for lag
 #' windows defined by i,j; a vectorized version of covariance_i_j.
 #'
 #' @param f_data the functional data matrix with observed functions in the columns
@@ -88,7 +88,7 @@ covariance_i_j_vec <- function(f_data, i, j) {
 # roxygen comments:
 #' Compute the approximate diagonal covariance matrix for lag windows defined by i
 #'
-#' `diagonal_covariance_i` Computes the approximate diagonal covariance matrix of the functional
+#' `diagonal_covariance_i` computes the approximate diagonal covariance matrix of the functional
 #' data for lag windows defined by i.
 #'
 #' @param f_data the functional data matrix with observed functions in the columns
@@ -117,7 +117,7 @@ diagonal_covariance_i <- function(f_data, i) {
 # roxygen comments:
 #' Compute the approximate covariance at a point for lag windows defined by i,j
 #'
-#' `scalar_covariance_i_j` Computes the approximate covariance at a point of the functional data
+#' `scalar_covariance_i_j` computes the approximate covariance at a point of the functional data
 #' for lag windows defined by i,j; a scalarized version of covariance_i_j that takes point estimates.
 #'
 #' @param f_data the functional data matrix with observed functions in the columns
@@ -147,7 +147,7 @@ scalar_covariance_i_j <- function(f_data, i, j, times) {
 # roxygen comments:
 #' Compute the approximate covariance at a point for lag windows defined by i,j
 #'
-#' `scalar_covariance_i_j_vec` Computes the approximate covariance at a point of the functional data
+#' `scalar_covariance_i_j_vec` computes the approximate covariance at a point of the functional data
 #' for lag windows defined by i,j; a vectorized version of scalar_covariance_i_j.
 #'
 #' @param f_data the functional data matrix with observed functions in the columns

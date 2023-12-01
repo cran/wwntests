@@ -1,6 +1,6 @@
 #' Compute Functional Hypothesis Tests
 #'
-#' `fport_test` Computes a variety of functional portmanteau hypothesis tests. All hypothesis tests in this
+#' `fport_test` computes a variety of white noise tests for functional data. All white noise tests in this
 #' package are accessible through this function.
 #'
 #' @param f_data The functional data matrix with observed functions in the columns.
@@ -49,11 +49,9 @@
 #' functional data. This test assesses the significance of lagged autocovariance operators at a single, user-specified
 #' lag h. More specifically, it tests the null hypothesis that the lag-h autocovariance operator is equal to 0.
 #' This test is designed for stationary functional time-series, and is valid under conditional heteroscedasticity
-#' conditions.
-#' The required parameter for this test are 'lag', which determines the lag at which the test is evaluated. If this
-#' parameter is left blank, it will take a default of 1.
-#' The optional parameters for this test are 'iid', 'M', 'bootstrap', 'block_size', 'straps', 'moving',
-#' and 'alpha'.
+#' conditions. The required parameter for this test is 'lag', which determines the lag at which the test is evaluated. If this
+#' parameter is left blank, it will take a default of 1. The optional parameters for this test are 'iid', 'M', 'bootstrap',
+#' 'block_size', 'straps', 'moving',and 'alpha'.
 #'
 #' The "multi-lag" portmanteau test is also based on the sample autocovariance function computed from the functional
 #' data. This test assesses the cumulative significance of lagged autocovariance operators, up to a user-selected

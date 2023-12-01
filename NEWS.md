@@ -1,3 +1,8 @@
+# wwntests 1.1.0 (Nov 30, 2023)
+
+* Added a `GOF_far`test to check the goodness-of-fit of FAR(1) models.
+
+
 # wwntests 1.0.2 (Sep 7, 2022)
 
 * Got rid of the `low_disc` option in `single_leg_test` and `multiple_lag_test` due to the unavailability of the package `fOptions` dependency.
@@ -22,3 +27,4 @@
 
 * Added a `NEWS.md` file to track changes to the package.
 * Pushing for CRAN release.
+

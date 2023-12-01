@@ -1,6 +1,6 @@
 #' Single-Lag Hypothesis Test
 #'
-#' `single_lag_test` Computes the single-lag hypothesis test at a single user-specified lag.
+#' `single_lag_test` computes the single-lag hypothesis test at a single user-specified lag.
 #'
 #' @param f_data The functional data matrix with observed functions in the columns
 #' @param lag Positive integer value. The lag to use to compute the single lag test statistic.
@@ -10,14 +10,14 @@
 #' @param iid A Boolean value, FALSE by default. If given TRUE, the hypothesis test will use a strong-white
 #' noise assumption (instead of a weak-white noise assumption).
 #' @param M Positive integer value. Number of Monte-Carlo simulations for the Welch-Satterthwaite approximation.
-#' @param bootstrap A Boolean value, FALSE by default If given TRUE, the hypothesis test is done by
+#' @param bootstrap A Boolean value, FALSE by default. If given TRUE, the hypothesis test is done by
 #' approximating the limiting distribution of the test statistic via a block bootstrap process.
 #' @param block_size A positive Integer value, with the default value being computed via the adaptive
 #' bandwidth selection method in the "spectral" test. Determines the block size (of each block in each
 #' bootstrap sample) if the test is being bootstrapped.
 #' @param straps A positive Integer, with a default value of 300. Determines the number of bootstrap samples
 #' to take if the test is being bootstrapped. Only used if 'bootstrap' == TRUE.
-#' @param moving A Boolean value, FALSE by default If given TRUE, the performed block bootstrap will be moving
+#' @param moving A Boolean value, FALSE by default. If given TRUE, the performed block bootstrap will be moving
 #' rather than stationary.
 #' @param suppress_raw_output Boolean value, FALSE by default. If TRUE, the function will not return the list
 #' containing the p-value, quantile, and statistic.
@@ -115,8 +115,8 @@ single_lag_test <- function(f_data, lag=1, alpha=0.05, iid=FALSE,
 #'
 #' `multi_lag_test` Computes the multi-lag hypothesis test over a range of user-specified lags.
 #'
-#' @param f_data the functional data matrix with observed functions in the columns
-#' @param lag Positive integer value. The lag to use to compute the single lag test statistic
+#' @param f_data The functional data matrix with observed functions in the columns
+#' @param lag Positive integer value. The lag to use to compute the multi-lag test statistic
 #' @param alpha Numeric value between 0 and 1 specifying the significance level to be used in the specified
 #' hypothesis test. The default value is 0.05. Note, the significance value is only ever used to compute the
 #' 1-alpha quantile of the limiting distribution of the specified test's test statistic.
@@ -272,7 +272,7 @@ spectral_test <- function(f_data, kernel = 'Bartlett', bandwidth = 'adaptive', a
 #' `independence_test` Computes the independence test with a user-specified number of principal components
 #' and range of lags.
 #'
-#' @param f_data the functional data matrix with observed functions in the columns
+#' @param f_data The functional data matrix with observed functions in the columns
 #' @param components A positive Integer specifying the number of principal components to project the data on;
 #' ranked in order of importance (importance is determined by the proportion of the variance that is explained
 #' by the individual principal component.)
@@ -362,3 +362,86 @@ independence_test <- function(f_data, components, lag, alpha = 0.05,
     results
   }
 }
+
+
+#' Goodness-of-fit test for FAR(1)
+#'
+#' `GOF_far` computes the goodness-of-fit test for FAR(1) over a range of user-specified lags.
+#'
+#' @param f_data The functional data matrix with observed functions in the columns.
+#' @param lag Positive integer value. A user-selected maximum lag. 10 by default.
+#' @param alpha Numeric value between 0 and 1 specifying the significance level to be used in the specified
+#' hypothesis test. The default value is 0.05. Note, the significance value is only ever used to compute the
+#' 1-alpha quantile of the limiting distribution of the specified test's test statistic.
+#' @param M Positive integer value. Number of Monte-Carlo simulation for Welch-Satterthwaite approximation.10000 by default.
+#' @param suppress_raw_output Boolean value, FALSE by default. If TRUE, the function will not return the list
+#' containing the p-value, quantile, and statistic.
+#' @param suppress_print_output Boolean value, FALSE by default. If TRUE, the function will not print any
+#' output to the console.
+#' @description The "GOF_far" test fits a FAR(1) model and then assesses the cumulative significance of lagged
+#' autocovariance operators from the model residuals, up to a user-selected maximum lag K.
+#' More specifically, it tests the null hypothesis that the first K lag-h autocovariance
+#' operators (h going from 1 to K) from the model residuals is equal to 0.
+#' @return If suppress_raw_output = FALSE, a list containing the test statistic, the 1-alpha quantile of the
+#' limiting distribution, and the p-value computed from the specified hypothesis test. Also prints output
+#' containing a short description of the test, the p-value, and additional information about the test if
+#' suppress_print_output = FALSE.
+#'
+#' @references
+#' [1] Kim, M., Kokoszka, P., & Rice, G. (2023). White noise testing for functional time series. Statistic Surveys, 17, 119-168.
+#'
+#' @examples
+#' f <- far_1_S(100, 50, 0.75)
+#' GOF_far(f, lag=5)
+#'
+#' @import stats
+#' @export
+GOF_far<-function(f_data, lag=5, M=10000, alpha=0.05, suppress_raw_output=FALSE, suppress_print_output=FALSE)
+{
+  if (!requireNamespace('fda')) {
+    stop("Please install the 'fda' package to perform the GOf for FAR(1) test.")
+  }
+
+  if (suppress_raw_output == TRUE & suppress_print_output == TRUE) {
+    stop("Current choice of parameters will produce no output. Atleast one of the parameters
+         'suppress_raw_output' or 'suppress_print_output' must be FALSE.")
+  }
+
+  J <- dim(f_data)[1]
+  N <- dim(f_data)[2]
+
+  basis <- fda::create.bspline.basis(rangeval=c(0,1), nbasis=25, norder=4)
+  fd.data <- fda::smooth.basis(0:(J-1)/(J-1), f_data, basis)$fd
+  pca <- fda::pca.fd(fd.data[1:(N-1)], nharm=20, fda::fdPar(fd.data), centerfns=TRUE)
+  kN <- which.max(cumsum(pca$values)/sum(pca$values)>0.90)
+
+  score <- as.matrix(pca$scores[,1:kN])
+  eigenval <- pca$values[1:kN]
+  xi <- score%*%diag(1/eigenval,kN)%*%t(score)/N
+
+  X <- fda::eval.fd(fd.data,0:(J-1)/(J-1))
+  X <- X-rowMeans(X)
+  eg <- X[,2:N]-X[,2:N]%*%xi
+  eg <- cbind(X[,1],eg)
+
+  f <- array(NA,c(N-1,J,lag))
+  for(h in 1:lag)
+  {
+    f[,,h] <- xi[,h:(N-1)]%*%t(eg[,1:(N-h)])
+  }
+
+  results <-V_WS_quantile_far(eg, f, lag, alpha, M)
+  if (suppress_print_output == FALSE) {
+    title_print <- sprintf("Goodness-of-fit test for FAR(1)\n\n")
+    null_print <- sprintf("null hypothesis: FAR(1) model is adequate for the series.\n")
+    p_val_print <- sprintf("p-value = %f\n", results$p_value)
+    samp_print <- sprintf("sample size = %d\n", NCOL(f_data))
+    lag_print <- sprintf("lag = %d\n\n\n", lag)
+    message(c(title_print, null_print, p_val_print, samp_print,
+              lag_print))
+  }
+  if (suppress_raw_output == FALSE) {
+    results
+  }
+}
+

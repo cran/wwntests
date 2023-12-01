@@ -15,9 +15,9 @@ multi_lag_test(
 )
 }
 \arguments{
-\item{f_data}{the functional data matrix with observed functions in the columns}
+\item{f_data}{The functional data matrix with observed functions in the columns}
 
-\item{lag}{Positive integer value. The lag to use to compute the single lag test statistic}
+\item{lag}{Positive integer value. The lag to use to compute the multi-lag test statistic}
 
 \item{M}{Positive integer value. Number of Monte-Carlo simulation for Welch-Satterthwaite approximation.}
 

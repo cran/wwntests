@@ -15,6 +15,6 @@ autocov_approx_h(f_data, lag)
 A 2-dimensional array encoding the autocovariance matrix for a given lag h.
 }
 \description{
-`autocov_approx_h` Computes the approximate autocovariance for a given lag h of the functional
+`autocov_approx_h` computes the approximate autocovariance for a given lag h of the functional
 data
 }
